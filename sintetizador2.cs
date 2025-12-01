@@ -1,6 +1,10 @@
-﻿using System.Text;
+﻿using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
+using System;
 using System.Collections.Generic;
-using NAudio.Wave;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
 
 
 namespace sintetizador2
@@ -242,7 +246,7 @@ namespace sintetizador2
         }
 
         //=========================================================================================================================
-        //A partir de esta línea
+        
         public class SineWaveProvider : WaveProvider32
         {
             private float frequency;
@@ -313,6 +317,7 @@ namespace sintetizador2
 
                 }
             }
+
         }
 
 
@@ -322,7 +327,7 @@ namespace sintetizador2
 
 
 
-        //Hasta esta línea
+       
         //=============================================================================================================================
         public void GenerarOndaTriangular()
         {
@@ -370,7 +375,54 @@ namespace sintetizador2
             }
         }
     }
+
+
+    //============================================================================================================
+
+   
+
+    public partial class FormSintes : Form
+    {
+        private WaveOutEvent salida;
+        private SignalGenerator generador;
+
+
+        public FormSintes()
+        {
+            InitializeComponent();
+        }
+
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            // Frecuencia fija simple
+            double frecuencia = 440; // La
+
+
+            generador = new SignalGenerator()
+            {
+                Frequency = frecuencia,
+                Gain = 0.3,
+                Type = SignalGeneratorType.Sine
+            };
+
+
+            salida = new WaveOutEvent();
+            salida.Init(generador);
+            salida.Play();
+        }
+
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            salida?.Stop();
+            salida?.Dispose();
+        }
+    }
 }
+
+
+
 
 
 

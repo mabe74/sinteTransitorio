@@ -1,0 +1,6 @@
+C:\Users\M&G\Desktop\curso_python_cfp6\c_sharp\ejercicios\sintetizador\sinteTransitorio\obj\Debug\net8.0-windows\sintetizador2.csproj.AssemblyReference.cache
+C:\Users\M&G\Desktop\curso_python_cfp6\c_sharp\ejercicios\sintetizador\sinteTransitorio\obj\Debug\net8.0-windows\sintetizador2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\M&G\Desktop\curso_python_cfp6\c_sharp\ejercicios\sintetizador\sinteTransitorio\obj\Debug\net8.0-windows\sintetizador2.AssemblyInfoInputs.cache
+C:\Users\M&G\Desktop\curso_python_cfp6\c_sharp\ejercicios\sintetizador\sinteTransitorio\obj\Debug\net8.0-windows\sintetizador2.AssemblyInfo.cs
+C:\Users\M&G\Desktop\curso_python_cfp6\c_sharp\ejercicios\sintetizador\sinteTransitorio\obj\Debug\net8.0-windows\sintetizador2.csproj.CoreCompileInputs.cache
+C:\Users\M&G\Desktop\curso_python_cfp6\c_sharp\ejercicios\sintetizador\sinteTransitorio\obj\Debug\net8.0-windows\sintetizador2.sourcelink.json
