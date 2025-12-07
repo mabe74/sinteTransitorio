@@ -1,14 +1,283 @@
-﻿using NAudio.Wave;
-using NAudio.Wave.SampleProviders;
-using System;
+﻿using System.Text;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Windows.Forms;
+using NAudio.Wave;
 
 
 namespace sintetizador2
 {
+    // Crea la interfaz que define lo que se quiere exponer
+    public interface ISintetizador
+    {
+        string EncenderSinte(bool encendido);
+        string ChequearBateriaMensaje();
+        void GenerarOndaSenoAnimada();
+        void GenerarOndaTriangular();
+        int NivelBateria { get; set; }
+        string MostrarEstadoBateriaPorcentaje { get; }
+        ModelosSintes Modelo { get; }
+    }
+
+    // Clase base abstracta para polimorfismo (nueva, NO modifica la clase original)
+    public abstract class SintetizadorBase : ISintetizador
+    {
+        // Implementaciones por defecto o delegadas
+        public abstract string EncenderSinte(bool encendido);
+        public abstract string ChequearBateriaMensaje();
+        public abstract void GenerarOndaSenoAnimada();
+        public abstract void GenerarOndaTriangular();
+
+        public abstract int NivelBateria { get; set; }
+        public abstract string MostrarEstadoBateriaPorcentaje { get; }
+        public abstract ModelosSintes Modelo { get; }
+
+        // Método útil común a todas las instancias (puede llamarse desde las hijas)
+        protected string ConstruirInfoBasica(ModelosSintes modelo, bool tienePantalla, int tension, string tipoTension,
+                                             int osciladores, int polifonia, bool tieneTeclas, int numeroTeclas)
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine($"{modelo}: ON");
+            sb.AppendLine($"Pantalla: {tienePantalla}");
+            sb.AppendLine($"Tensión: {tension} {tipoTension}");
+            sb.AppendLine($"Cantidad de osciladores: {osciladores}");
+            sb.AppendLine($"Polifonía: {polifonia}");
+            if (tieneTeclas) sb.AppendLine($"Número de teclas: {numeroTeclas}");
+            else sb.AppendLine("No posee teclas");
+            return sb.ToString();
+        }
+    }
+    //-----------------------------------------------------------------------------------------------------------------
+
+    // Adapter para MonoPoly, delega en la clase existente sintetizador2
+    public class MonoPolyAdapter : SintetizadorBase
+    {
+        private sintetizador2 _inner;
+
+        public MonoPolyAdapter()
+        {
+            // usa uno de los constructores existentes de tu clase original
+            _inner = new sintetizador2(ModelosSintes.MonoPoly, true, 37, true, 12, "DC", 2, 4);
+        }
+
+        public override string EncenderSinte(bool encendido)
+        {
+            // delega
+            return _inner.EncenderSinte(encendido);
+        }
+
+        public override string ChequearBateriaMensaje()
+        {
+            return _inner.ChequearBateriaMensaje();
+        }
+
+        public override void GenerarOndaSenoAnimada()
+        {
+            _inner.GenerarOndaSenoAnimada();
+        }
+
+        public override void GenerarOndaTriangular()
+        {
+            _inner.GenerarOndaTriangular();
+        }
+
+        public override int NivelBateria
+        {
+            get => _inner.NivelBateria;
+            set => _inner.NivelBateria = value;
+        }
+
+        public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
+
+        public override ModelosSintes Modelo => ModelosSintes.MonoPoly;
+    }
+
+    // Adapter para ARP2600
+    public class ARP2600Adapter : SintetizadorBase
+    {
+        private sintetizador2 _inner;
+
+        public ARP2600Adapter()
+        {
+            _inner = new sintetizador2(ModelosSintes.ARP2600, false, 0, false, 15, "AC", 3, 6);
+        }
+
+        public override string EncenderSinte(bool encendido) => _inner.EncenderSinte(encendido);
+        public override string ChequearBateriaMensaje() => _inner.ChequearBateriaMensaje();
+        public override void GenerarOndaSenoAnimada() => _inner.GenerarOndaSenoAnimada();
+        public override void GenerarOndaTriangular() => _inner.GenerarOndaTriangular();
+        public override int NivelBateria { get => _inner.NivelBateria; set => _inner.NivelBateria = value; }
+        public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
+        public override ModelosSintes Modelo => ModelosSintes.ARP2600;
+    }
+
+    // Adapter para ARP2600
+    public class Model_DAdapter : SintetizadorBase
+    {
+        private sintetizador2 _inner;
+
+        public Model_DAdapter()
+        {
+            _inner = new sintetizador2(ModelosSintes.ARP2600, false, 0, false, 15, "AC", 3, 6);
+        }
+
+        public override string EncenderSinte(bool encendido) => _inner.EncenderSinte(encendido);
+        public override string ChequearBateriaMensaje() => _inner.ChequearBateriaMensaje();
+        public override void GenerarOndaSenoAnimada() => _inner.GenerarOndaSenoAnimada();
+        public override void GenerarOndaTriangular() => _inner.GenerarOndaTriangular();
+        public override int NivelBateria { get => _inner.NivelBateria; set => _inner.NivelBateria = value; }
+        public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
+        public override ModelosSintes Modelo => ModelosSintes.ARP2600;
+    }
+
+
+
+
+    //Adapter para el Solina
+    public class SolinaAdapter : SintetizadorBase
+    {
+        private sintetizador2 _inner;
+
+        public SolinaAdapter()
+        {
+            _inner = new sintetizador2(ModelosSintes.Solina, true, 49, true, 12, "DC", 2, 8);
+        }
+
+        public override string EncenderSinte(bool encendido) => _inner.EncenderSinte(encendido);
+        public override string ChequearBateriaMensaje() => _inner.ChequearBateriaMensaje();
+        public override void GenerarOndaSenoAnimada() => _inner.GenerarOndaSenoAnimada();
+        public override void GenerarOndaTriangular() => _inner.GenerarOndaTriangular();
+        public override int NivelBateria { get => _inner.NivelBateria; set => _inner.NivelBateria = value; }
+        public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
+        public override ModelosSintes Modelo => ModelosSintes.Solina;
+    }
+
+
+    // Adapter para Oddissey
+    public class OddisseyAdapter : SintetizadorBase
+    {
+        private sintetizador2 _inner;
+
+        public OddisseyAdapter()
+        {
+            _inner = new sintetizador2(ModelosSintes.ARP2600, false, 0, false, 15, "AC", 3, 6);
+        }
+
+        public override string EncenderSinte(bool encendido) => _inner.EncenderSinte(encendido);
+        public override string ChequearBateriaMensaje() => _inner.ChequearBateriaMensaje();
+        public override void GenerarOndaSenoAnimada() => _inner.GenerarOndaSenoAnimada();
+        public override void GenerarOndaTriangular() => _inner.GenerarOndaTriangular();
+        public override int NivelBateria { get => _inner.NivelBateria; set => _inner.NivelBateria = value; }
+        public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
+        public override ModelosSintes Modelo => ModelosSintes.ARP2600;
+    }
+
+    // Adapter para MS_5
+    public class MS_5Adapter : SintetizadorBase
+    {
+        private sintetizador2 _inner;
+
+        public MS_5Adapter()
+        {
+            _inner = new sintetizador2(ModelosSintes.ARP2600, false, 0, false, 15, "AC", 3, 6);
+        }
+
+        public override string EncenderSinte(bool encendido) => _inner.EncenderSinte(encendido);
+        public override string ChequearBateriaMensaje() => _inner.ChequearBateriaMensaje();
+        public override void GenerarOndaSenoAnimada() => _inner.GenerarOndaSenoAnimada();
+        public override void GenerarOndaTriangular() => _inner.GenerarOndaTriangular();
+        public override int NivelBateria { get => _inner.NivelBateria; set => _inner.NivelBateria = value; }
+        public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
+        public override ModelosSintes Modelo => ModelosSintes.ARP2600;
+    }
+
+    // Adapter para MS_101
+    public class MS_101Adapter : SintetizadorBase
+    {
+        private sintetizador2 _inner;
+
+        public MS_101Adapter()
+        {
+            _inner = new sintetizador2(ModelosSintes.ARP2600, false, 0, false, 15, "AC", 3, 6);
+        }
+
+        public override string EncenderSinte(bool encendido) => _inner.EncenderSinte(encendido);
+        public override string ChequearBateriaMensaje() => _inner.ChequearBateriaMensaje();
+        public override void GenerarOndaSenoAnimada() => _inner.GenerarOndaSenoAnimada();
+        public override void GenerarOndaTriangular() => _inner.GenerarOndaTriangular();
+        public override int NivelBateria { get => _inner.NivelBateria; set => _inner.NivelBateria = value; }
+        public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
+        public override ModelosSintes Modelo => ModelosSintes.ARP2600;
+    }
+
+
+    // Adapter para Genérico
+    public class GenericoAdapter : SintetizadorBase
+    {
+        private sintetizador2 _inner;
+
+        public GenericoAdapter()
+        {
+            _inner = new sintetizador2(ModelosSintes.ARP2600, false, 0, false, 15, "AC", 3, 6);
+        }
+
+        public override string EncenderSinte(bool encendido) => _inner.EncenderSinte(encendido);
+        public override string ChequearBateriaMensaje() => _inner.ChequearBateriaMensaje();
+        public override void GenerarOndaSenoAnimada() => _inner.GenerarOndaSenoAnimada();
+        public override void GenerarOndaTriangular() => _inner.GenerarOndaTriangular();
+        public override int NivelBateria { get => _inner.NivelBateria; set => _inner.NivelBateria = value; }
+        public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
+        public override ModelosSintes Modelo => ModelosSintes.ARP2600;
+    }
+
+    //Repositorio
+
+    public static class FabricaSintes
+    {
+        public static SintetizadorBase Crear(ModelosSintes modelo)
+        {
+            switch (modelo)
+            {
+                case ModelosSintes.MonoPoly: return new MonoPolyAdapter();
+                case ModelosSintes.ARP2600: return new ARP2600Adapter();
+                case ModelosSintes.Model_D: return new Model_DAdapter();
+                case ModelosSintes.Solina: return new SolinaAdapter();
+                case ModelosSintes.Oddissey: return new OddisseyAdapter();
+                case ModelosSintes.MS_5: return new MS_5Adapter();
+                case ModelosSintes.MS_101: return new MS_101Adapter();
+
+
+
+                // agregar casos para los demás modelos (Model_D, Oddissey, etc.)
+                default:
+                    // devuelve un adaptador genérico basado en los constructores por defecto
+                    return new GenericAdapter(modelo);
+            }
+        }
+    }
+
+    // Adaptador genérico (usa el constructor por defecto de sintetizador2 si no hay adapter específico)
+    public class GenericAdapter : SintetizadorBase
+    {
+        private sintetizador2 _inner;
+
+        public GenericAdapter(ModelosSintes modelo)
+        {
+            // intenta crear la instancia usando el constructor que sólo pide el modelo
+            _inner = new sintetizador2(modelo);
+        }
+
+        public override string EncenderSinte(bool encendido) => _inner.EncenderSinte(encendido);
+        public override string ChequearBateriaMensaje() => _inner.ChequearBateriaMensaje();
+        public override void GenerarOndaSenoAnimada() => _inner.GenerarOndaSenoAnimada();
+        public override void GenerarOndaTriangular() => _inner.GenerarOndaTriangular();
+        public override int NivelBateria { get => _inner.NivelBateria; set => _inner.NivelBateria = value; }
+        public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
+        public override ModelosSintes Modelo => _inner.GetType() == typeof(sintetizador2) ? ModelosSintes.Generico : ModelosSintes.Generico;
+    }
+
+
+
+
+    //==================================================================================================================
     public enum ModelosSintes
     {
         MonoPoly = 1,
@@ -246,7 +515,7 @@ namespace sintetizador2
         }
 
         //=========================================================================================================================
-        
+        //A partir de esta línea
         public class SineWaveProvider : WaveProvider32
         {
             private float frequency;
@@ -313,11 +582,11 @@ namespace sintetizador2
 
                     desplazamiento++;
 
-
+                    // si querés modificar frecuencia según la animación:
+                    // seno.SetFrequency(440f + desplazamiento);
 
                 }
             }
-
         }
 
 
@@ -327,7 +596,7 @@ namespace sintetizador2
 
 
 
-       
+        //Hasta esta línea
         //=============================================================================================================================
         public void GenerarOndaTriangular()
         {
@@ -375,50 +644,6 @@ namespace sintetizador2
             }
         }
     }
-
-
-    //============================================================================================================
-
-   
-
-    public partial class FormSintes : Form
-    {
-        private WaveOutEvent salida;
-        private SignalGenerator generador;
-
-
-        public FormSintes()
-        {
-            InitializeComponent();
-        }
-
-
-        private void btnPlay_Click(object sender, EventArgs e)
-        {
-            // Frecuencia fija simple
-            double frecuencia = 440; // La
-
-
-            generador = new SignalGenerator()
-            {
-                Frequency = frecuencia,
-                Gain = 0.3,
-                Type = SignalGeneratorType.Sine
-            };
-
-
-            salida = new WaveOutEvent();
-            salida.Init(generador);
-            salida.Play();
-        }
-
-
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            salida?.Stop();
-            salida?.Dispose();
-        }
-    }
 }
 
 
@@ -426,8 +651,5 @@ namespace sintetizador2
 
 
 
-
-
-
         
-      
+        

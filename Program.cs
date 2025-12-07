@@ -11,6 +11,35 @@ namespace sintetizador2
 
             //Carga la lista de sintetizadores
             sintetizador2.CargarMaquinas();
+            ISintetizador sinteAdaptado1 = new MonoPolyAdapter();
+            ISintetizador sinteAdaptado2 = new ARP2600Adapter();
+            ISintetizador sinteAdaptado3 = new Model_DAdapter();
+            ISintetizador sinteAdaptado4 = new SolinaAdapter();
+            ISintetizador sinteAdaptado5 = new OddisseyAdapter();
+            ISintetizador sinteAdaptado6 = new MS_5Adapter();
+            ISintetizador sinteAdaptado7 = new MS_101Adapter();
+            ISintetizador sinteAdaptado8 = new GenericoAdapter();
+
+            List<ISintetizador> sintes = new List<ISintetizador>()
+            {
+                new MonoPolyAdapter(),
+                new ARP2600Adapter(),
+                new Model_DAdapter(),
+                new SolinaAdapter(),
+                new OddisseyAdapter(),
+                new MS_5Adapter(),
+                new MS_101Adapter(),
+                new GenericoAdapter()
+            };
+
+            if (opcion >= 1 && opcion <= sintes.Count)
+            {
+                ISintetizador sinte = sintes[opcion - 1];
+
+                Console.WriteLine(sinte.EncenderSinte(true));
+                Console.WriteLine(sinte.ChequearBateriaMensaje());
+                Task.Run(() => sinte.GenerarOndaSenoAnimada());
+            }
 
 
 
@@ -116,5 +145,34 @@ namespace sintetizador2
 }
 
 
+/*
+ 
+ Sobrecargas
+ // Crea un sinte con todos los parámetros
+var sinte1 = new sintetizador2(ModelosSintes.ARP2600, true, 37, true, 15, "DC", 3, 6);
+
+// Crea un sinte indicando solo el modelo y cantidad de osciladores
+var sinte2 = new sintetizador2(ModelosSintes.Model_D, 2);
+
+// Crea un sinte indicando solo el modelo
+var sinte3 = new sintetizador2(ModelosSintes.MS_101);
+
+// Crea un sinte genérico sin parámetros
+var sinte4 = new sintetizador2();
+
  
  
+ //miSinte1.GenerarOndaSeno();
+ //miSinte1.GenerarOndaSenoAnimada();
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ */
