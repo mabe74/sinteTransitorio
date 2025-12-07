@@ -1,0 +1,1 @@
+Este es el archivo compartido para subir a GIT
