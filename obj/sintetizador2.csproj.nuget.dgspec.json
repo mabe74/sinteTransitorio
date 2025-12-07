@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\M&G\\Desktop\\curso_python_cfp6\\c_sharp\\ejercicios\\sintetizador\\sinteTransitorioVersionFecha_6-12-25\\sinteTransitorio\\sintetizador2.csproj": {}
+    "C:\\Users\\M&G\\Desktop\\curso_python_cfp6\\c_sharp\\ejercicios\\sintetizador\\sinteTransitorio\\sintetizador2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\M&G\\Desktop\\curso_python_cfp6\\c_sharp\\ejercicios\\sintetizador\\sinteTransitorioVersionFecha_6-12-25\\sinteTransitorio\\sintetizador2.csproj": {
+    "C:\\Users\\M&G\\Desktop\\curso_python_cfp6\\c_sharp\\ejercicios\\sintetizador\\sinteTransitorio\\sintetizador2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\M&G\\Desktop\\curso_python_cfp6\\c_sharp\\ejercicios\\sintetizador\\sinteTransitorioVersionFecha_6-12-25\\sinteTransitorio\\sintetizador2.csproj",
+        "projectUniqueName": "C:\\Users\\M&G\\Desktop\\curso_python_cfp6\\c_sharp\\ejercicios\\sintetizador\\sinteTransitorio\\sintetizador2.csproj",
         "projectName": "sintetizador2",
-        "projectPath": "C:\\Users\\M&G\\Desktop\\curso_python_cfp6\\c_sharp\\ejercicios\\sintetizador\\sinteTransitorioVersionFecha_6-12-25\\sinteTransitorio\\sintetizador2.csproj",
+        "projectPath": "C:\\Users\\M&G\\Desktop\\curso_python_cfp6\\c_sharp\\ejercicios\\sintetizador\\sinteTransitorio\\sintetizador2.csproj",
         "packagesPath": "C:\\Users\\M&G\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\M&G\\Desktop\\curso_python_cfp6\\c_sharp\\ejercicios\\sintetizador\\sinteTransitorioVersionFecha_6-12-25\\sinteTransitorio\\obj\\",
+        "outputPath": "C:\\Users\\M&G\\Desktop\\curso_python_cfp6\\c_sharp\\ejercicios\\sintetizador\\sinteTransitorio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

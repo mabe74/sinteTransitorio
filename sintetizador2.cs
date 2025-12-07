@@ -109,14 +109,14 @@ namespace sintetizador2
         public override ModelosSintes Modelo => ModelosSintes.ARP2600;
     }
 
-    // Adapter para ARP2600
+    // Adapter para Model_DAdapter
     public class Model_DAdapter : SintetizadorBase
     {
         private sintetizador2 _inner;
 
         public Model_DAdapter()
         {
-            _inner = new sintetizador2(ModelosSintes.ARP2600, false, 0, false, 15, "AC", 3, 6);
+            _inner = new sintetizador2(ModelosSintes.Model_D, false, 0, false, 15, "AC", 3, 6);
         }
 
         public override string EncenderSinte(bool encendido) => _inner.EncenderSinte(encendido);
@@ -158,7 +158,7 @@ namespace sintetizador2
 
         public OddisseyAdapter()
         {
-            _inner = new sintetizador2(ModelosSintes.ARP2600, false, 0, false, 15, "AC", 3, 6);
+            _inner = new sintetizador2(ModelosSintes.Oddissey, false, 0, false, 15, "AC", 3, 6);
         }
 
         public override string EncenderSinte(bool encendido) => _inner.EncenderSinte(encendido);
@@ -177,7 +177,7 @@ namespace sintetizador2
 
         public MS_5Adapter()
         {
-            _inner = new sintetizador2(ModelosSintes.ARP2600, false, 0, false, 15, "AC", 3, 6);
+            _inner = new sintetizador2(ModelosSintes.MS_5, false, 0, false, 15, "AC", 3, 6);
         }
 
         public override string EncenderSinte(bool encendido) => _inner.EncenderSinte(encendido);
@@ -196,7 +196,7 @@ namespace sintetizador2
 
         public MS_101Adapter()
         {
-            _inner = new sintetizador2(ModelosSintes.ARP2600, false, 0, false, 15, "AC", 3, 6);
+            _inner = new sintetizador2(ModelosSintes.MS_101, false, 0, false, 15, "AC", 3, 6);
         }
 
         public override string EncenderSinte(bool encendido) => _inner.EncenderSinte(encendido);
@@ -216,7 +216,7 @@ namespace sintetizador2
 
         public GenericoAdapter()
         {
-            _inner = new sintetizador2(ModelosSintes.ARP2600, false, 0, false, 15, "AC", 3, 6);
+            _inner = new sintetizador2(ModelosSintes.Generico, false, 0, false, 15, "AC", 3, 6);
         }
 
         public override string EncenderSinte(bool encendido) => _inner.EncenderSinte(encendido);

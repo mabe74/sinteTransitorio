@@ -32,6 +32,7 @@ namespace sintetizador2
                 new GenericoAdapter()
             };
 
+            /*
             if (opcion >= 1 && opcion <= sintes.Count)
             {
                 ISintetizador sinte = sintes[opcion - 1];
@@ -41,7 +42,7 @@ namespace sintetizador2
                 Task.Run(() => sinte.GenerarOndaSenoAnimada());
             }
 
-
+            */
 
             do
             {

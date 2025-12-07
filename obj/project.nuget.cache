@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OAycYtx1xTY=",
+  "dgSpecHash": "8cr/gJmwxHc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\M&G\\Desktop\\curso_python_cfp6\\c_sharp\\ejercicios\\sintetizador\\sinteTransitorioVersionFecha_6-12-25\\sinteTransitorio\\sintetizador2.csproj",
+  "projectFilePath": "C:\\Users\\M&G\\Desktop\\curso_python_cfp6\\c_sharp\\ejercicios\\sintetizador\\sinteTransitorio\\sintetizador2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\M&G\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\M&G\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
