@@ -125,7 +125,7 @@ namespace sintetizador2
         public override void GenerarOndaTriangular() => _inner.GenerarOndaTriangular();
         public override int NivelBateria { get => _inner.NivelBateria; set => _inner.NivelBateria = value; }
         public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
-        public override ModelosSintes Modelo => ModelosSintes.ARP2600;
+        public override ModelosSintes Modelo => ModelosSintes.Model_D;
     }
 
 
@@ -167,7 +167,7 @@ namespace sintetizador2
         public override void GenerarOndaTriangular() => _inner.GenerarOndaTriangular();
         public override int NivelBateria { get => _inner.NivelBateria; set => _inner.NivelBateria = value; }
         public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
-        public override ModelosSintes Modelo => ModelosSintes.ARP2600;
+        public override ModelosSintes Modelo => ModelosSintes.Oddissey;
     }
 
     // Adapter para MS_5
@@ -186,7 +186,7 @@ namespace sintetizador2
         public override void GenerarOndaTriangular() => _inner.GenerarOndaTriangular();
         public override int NivelBateria { get => _inner.NivelBateria; set => _inner.NivelBateria = value; }
         public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
-        public override ModelosSintes Modelo => ModelosSintes.ARP2600;
+        public override ModelosSintes Modelo => ModelosSintes.MS_5;
     }
 
     // Adapter para MS_101
@@ -205,7 +205,7 @@ namespace sintetizador2
         public override void GenerarOndaTriangular() => _inner.GenerarOndaTriangular();
         public override int NivelBateria { get => _inner.NivelBateria; set => _inner.NivelBateria = value; }
         public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
-        public override ModelosSintes Modelo => ModelosSintes.ARP2600;
+        public override ModelosSintes Modelo => ModelosSintes.MS_101;
     }
 
 
@@ -225,7 +225,7 @@ namespace sintetizador2
         public override void GenerarOndaTriangular() => _inner.GenerarOndaTriangular();
         public override int NivelBateria { get => _inner.NivelBateria; set => _inner.NivelBateria = value; }
         public override string MostrarEstadoBateriaPorcentaje => _inner.MostrarEstadoBateriaPorcentaje;
-        public override ModelosSintes Modelo => ModelosSintes.ARP2600;
+        public override ModelosSintes Modelo => ModelosSintes.Generico;
     }
 
     //Repositorio
